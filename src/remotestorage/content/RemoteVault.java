@@ -26,7 +26,7 @@ public class RemoteVault extends StorageBlock {
             Items.silicon, 150
         ));
 
-        size = 3;
+        size = 2;
         health = 500;
         itemCapacity = 1000;
         hasItems = true;
