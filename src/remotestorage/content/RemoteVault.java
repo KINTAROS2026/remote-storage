@@ -17,8 +17,9 @@ public class RemoteVault extends StorageBlock {
 
     public RemoteVault(String name) {
         super(name);
- //   research = mindustry.content.Blocks.vault;  // ← ここに追加        
         
+    alwaysUnlocked = true;   // ← これを追加（最初から使える）
+
         requirements(Category.effect, with(
             Items.titanium, 250,
             Items.thorium, 100,
