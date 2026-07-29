@@ -70,5 +70,31 @@ public class RemoteVault extends StorageBlock {
                 }
             }
         }
+@Override
+public boolean acceptItem(Building source, mindustry.type.Item item) {
+    // コアにリンクしていない場合は通常通り
+    if (linkedCore == null) {
+        return items.get(item) < getMaximumAccepted(item);
+    }
+
+    // コアが満タンなら受け入れない（破棄しない）
+    CoreBuild core = (CoreBuild) linkedCore;
+    return core.items.get(item) < core.storageCapacity;
+}
+
+@Override
+public void handleItem(Building source, mindustry.type.Item item) {
+    if (linkedCore != null) {
+        CoreBuild core = (CoreBuild) linkedCore;
+        // 満タンなら何もしない（焼却しない）
+        if (core.items.get(item) >= core.storageCapacity) {
+            return;
+        }
+        core.noEffect = true;
+        linkedCore.handleItem(source, item);
+    } else {
+        super.handleItem(source, item);
+    }
+}       
     }
 }
