@@ -21,9 +21,8 @@ public class RemoteVault extends StorageBlock {
     alwaysUnlocked = true;   // ← これを追加（最初から使える）
 
         requirements(Category.effect, with(
-            Items.titanium, 250,
-            Items.thorium, 100,
-            Items.silicon, 150
+            Items.copper, 100,
+            Items.lead, 100
         ));
 
         size = 2;
